@@ -51,6 +51,15 @@ services:
     environment:
       - ZBX_SERVER_HOST=zabbix-server
 
+  zabbix-java-gateway:
+    image: zabbix/zabbix-java-gateway:alpine-6.2.0
+    ports:
+      - 10052:10052
+    depends_on:
+      - postgres-server
+      - zabbix-server
+
+
 volumes:
   postgres_data:
     driver: local
